@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion } from 'motion/react'; 
 import { Home as HomeIcon, User, FolderOpen, Mail } from 'lucide-react';
 
 const ITEMS = [
@@ -18,30 +19,47 @@ export default function Sidebar() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        let mostVisible = null;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive(entry.target.id);
+            if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
+              mostVisible = entry;
+            }
           }
         });
+        if (mostVisible) setActive(mostVisible.target.id);
       },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+      { threshold: [0.25, 0.5, 0.75, 1] }
     );
 
-    sections.forEach((section) => observer.observe(section));
+    // Di sini perubahannya, hapus "as Element"
+    sections.forEach((section) => observer.observe(section)); 
+    
     return () => observer.disconnect();
   }, []);
 
   return (
     <aside className="sidebar" aria-label="Navigasi cepat di halaman Home">
       {ITEMS.map(({ id, label, Icon }) => (
-        <a
+        <a 
           key={id}
           href={`#${id}`}
-          className={`sidebar__item${active === id ? ' sidebar__item--active' : ''}`}
+          className="sidebar__item"
           aria-label={label}
           title={label}
         >
-          <Icon size={19} strokeWidth={2.25} />
+          {active === id && (
+            <motion.span
+              layoutId="sidebar-active-bg"
+              className="sidebar__item-bg"
+              transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+            />
+          )}
+          <Icon
+            size={19}
+            strokeWidth={2.25}
+            className={`sidebar__item-icon${active === id ? ' sidebar__item-icon--active' : ''}`}
+          />
         </a>
       ))}
     </aside>

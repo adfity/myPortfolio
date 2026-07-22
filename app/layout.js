@@ -1,5 +1,6 @@
 import { Archivo_Black, IBM_Plex_Mono } from 'next/font/google';
 import Header from '@/components/Header';
+import SiteFooter from '@/components/SiteFooter';
 import './globals.css';
 
 const archivoBlack = Archivo_Black({
@@ -28,7 +29,7 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         <main>{children}</main>
-        <footer>© {new Date().getFullYear()} Adit Fitra Yoga · Dibuat dengan Next.js</footer>
+        <SiteFooter>© {new Date().getFullYear()} Adit Fitra Yoga · Dibuat dengan Next.js</SiteFooter>
       </body>
     </html>
   );

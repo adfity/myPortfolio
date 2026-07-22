@@ -1,32 +1,20 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
 
-export default function SectionReveal({ children, className = '' }) {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+export default function SectionReveal({ from = 'left', className, children, ...rest }) {
+  const offset = from === 'left' ? -60 : 60;
 
   return (
-    <div ref={ref} className={`reveal${visible ? ' reveal--visible' : ''} ${className}`}>
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, x: offset }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: false, amount: 0.4 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      {...rest}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
