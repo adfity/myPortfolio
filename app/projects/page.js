@@ -1,7 +1,7 @@
 import Projects from '@/components/Projects';
 
 export const metadata = {
-  title: 'Projects — Adit Fitra Yoga',
+  title: 'Projects | Adfity',
 };
 
 export default function ProjectsPage() {

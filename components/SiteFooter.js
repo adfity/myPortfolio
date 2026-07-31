@@ -2,11 +2,13 @@
 
 import { usePathname } from 'next/navigation';
 
-export default function SiteFooter() {
+export default function SiteFooter({ children }) {
   const pathname = usePathname();
   if (pathname === '/') return null;
 
   return (
-    <footer>© {new Date().getFullYear()} Adit Fitra Yoga · Dibuat dengan Next.js</footer>
+    <footer>
+      {children ?? `© ${new Date().getFullYear()} - Adfity`}
+    </footer>
   );
 }

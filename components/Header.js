@@ -27,20 +27,15 @@ const linkVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: 'easeOut' } },
 };
 
-const topLine = { closed: { rotate: 0, y: 0 }, open: { rotate: 45, y: 10 } };
+const topLine = { closed: { rotate: 0, y: 0 }, open: { rotate: 45, y: 12 } };
 const midLine = { closed: { opacity: 1 }, open: { opacity: 0 } };
-const botLine = { closed: { rotate: 0, y: 0 }, open: { rotate: -45, y: -10 } };
+const botLine = { closed: { rotate: 0, y: 0 }, open: { rotate: -45, y: -12 } };
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [open]);
+
 
   useEffect(() => {
     function handleKey(e) {

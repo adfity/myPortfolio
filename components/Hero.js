@@ -28,11 +28,11 @@ export default function Hero() {
             </p>
             <div className="hero__cta">
               <Link href="/projects" className="brut-btn brut-btn--primary">
-                <FileText size={18} strokeWidth={2} />
+                <FileText size={21} strokeWidth={2.7} />
                 <span>My CV</span>
               </Link>
               <Link href="/contact" className="brut-btn">
-                <Mail size={18} strokeWidth={2} />
+                <Mail size={21} strokeWidth={2.7} />
                 <span>Contact Me</span>
               </Link>
             </div>

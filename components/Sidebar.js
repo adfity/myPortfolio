@@ -56,8 +56,8 @@ export default function Sidebar() {
             />
           )}
           <Icon
-            size={19}
-            strokeWidth={2.25}
+            size={21}
+            strokeWidth={2.7}
             className={`sidebar__item-icon${active === id ? ' sidebar__item-icon--active' : ''}`}
           />
         </a>

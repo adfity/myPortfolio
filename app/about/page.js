@@ -1,7 +1,7 @@
 import About from '@/components/About';
 
 export const metadata = {
-  title: 'About — Adit Fitra Yoga',
+  title: 'About | Adfity',
 };
 
 export default function AboutPage() {
