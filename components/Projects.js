@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
-import { Share2 } from 'lucide-react';
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 // Import named export secara dinamis untuk Next.js Client Component
 const GitHubCalendar = dynamic(
@@ -23,11 +23,10 @@ const PROJECTS = [
   {
     id: 'webgis',
     year: '2026',
-    status: 'ONGOING',
     category: 'web',
-    title: 'WebGIS Geospasial — Badan Informasi Geospasial',
+    title: 'GAPPS',
     meta: 'Internship IT Specialist · Bogor · Nov 2025 – Mei 2026',
-    desc: 'Mengembangkan aplikasi WebGIS untuk mendukung proyek geospasial, mencakup pemrosesan dan visualisasi data spasial bersama tim lintas fungsi.',
+    desc: 'Mengembangkan aplikasi WebGIS untuk mendukung proyek geospasial.',
     stack: ['Next.js', 'Leaflet', 'Django', 'PostGIS'],
     image: '/images/cek1.png',
     link: '/about',
@@ -35,24 +34,22 @@ const PROJECTS = [
   {
     id: 'diskominfo',
     year: '2024',
-    status: 'COMPLETED',
     category: 'web',
-    title: 'Sistem Layanan Internal — Diskominfo Jawa Barat',
+    title: 'ITSO',
     meta: 'Internship Staff Programmer · Bandung · Apr – Des 2024',
-    desc: 'Mengelola dan memelihara aplikasi web internal kantor, termasuk sistem booking dan presensi, serta memberikan dukungan teknis untuk isu-isu web.',
-    stack: ['PHP', 'Laravel', 'SQL', 'RESTful API'],
+    desc: 'Mengelola dan memelihara aplikasi web internal kantor.',
+    stack: ['PHP', 'Laravel', 'SQL', 'RESTful API', 'Talwind'],
     image: '/images/cek1.png',
     link: '/about',
   },
   {
     id: 'maxy-bootcamp',
     year: '2024',
-    status: 'COMPLETED',
     category: 'web',
-    title: 'Proyek Akhir Backend Developer Bootcamp',
+    title: 'LANDIFY',
     meta: 'Maxy Academy (MSIB Batch 7) · Sep – Des 2024 · Nilai 87.61 (A)',
-    desc: 'Membangun layanan backend sebagai bagian dari program bootcamp intensif, memperdalam praktik REST API dan manajemen basis data.',
-    stack: ['PHP', 'SQL', 'RESTful API'],
+    desc: 'Membangun layanan backend sebagai bagian dari program bootcamp intensif.',
+    stack: ['PHP', 'SQL', 'RESTful API', 'Talwind', 'mysql'],
     image: '/images/cek1.png',
     link: '/about',
   },
@@ -102,33 +99,32 @@ function ProjectCard({ project }) {
         aria-label={`Buka ${project.title}`}
         onClick={(e) => e.stopPropagation()}
       >
-        <Share2 size={16} />
+        <FaExternalLinkAlt size={16} />
       </Link>
 
-      {/* layer screenshot, muncul pas hover */}
+      {/* layer screenshot — samar di kondisi diam, full pas hover */}
       <motion.div
         className="proj-card__image"
         style={{ backgroundImage: `url(${project.image})` }}
         initial={false}
-        animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 1.04 }}
+        animate={{ opacity: hovered ? 1 : 0.15, scale: hovered ? 1 : 1.04 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
       />
       <motion.div
         className="proj-card__image-overlay"
         initial={false}
-        animate={{ opacity: hovered ? 1 : 0 }}
+        animate={{ opacity: hovered ? 1 : 0.2 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
       />
 
       {/* konten teks: judul, desc, stack */}
-      {/* konten teks: judul, desc, stack — hilang pas hover (gambar muncul) */}
       <motion.div
         className="proj-card__body"
         initial={false}
         animate={{ opacity: hovered ? 0 : 1, y: hovered ? 8 : 0 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        <h3 className="proj-card__title">{project.title}</h3>
+        <h3 className="proj-card__title proj-card__title--bold">{project.title}</h3>
         <p className="proj-card__desc">{project.desc}</p>
         <div className="proj-card__tags">
           {project.stack.map((tech) => (
@@ -141,6 +137,7 @@ function ProjectCard({ project }) {
     </div>
   );
 }
+
 export default function Projects() {
   const isDark = useIsDark();
   const [activeCategory, setActiveCategory] = useState('all');
@@ -207,12 +204,6 @@ export default function Projects() {
         {filtered.length === 0 && (
           <p className="log-note">Belum ada proyek untuk kategori ini.</p>
         )}
-
-
-        <p className="log-note">
-          * Screenshot proyek masih placeholder. Ganti field <code>image</code> di{' '}
-          <code>PROJECTS</code> dengan screenshot asli begitu tersedia.
-        </p>
       </div>
     </section>
   );

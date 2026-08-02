@@ -1,103 +1,120 @@
 'use client';
 
-import { useState } from 'react';
+import { motion } from 'motion/react';
+import {
+  FaEnvelope,
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaDiscord,
+} from 'react-icons/fa';
+
+const MotionDiv = motion.div;
 
 const EMAIL = 'aditfy06@gmail.com';
-const PHONE_DISPLAY = '+62 831-3510-3868';
-const PHONE_WA = '6283135103868';
+
+const CHANNELS = [
+  {
+    label: 'Email',
+    href: `mailto:${EMAIL}`,
+    external: false,
+    Icon: FaEnvelope,
+    tilt: -2,
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/adfity', // TODO: ganti
+    external: true,
+    Icon: FaGithub,
+    tilt: 1.5,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/adfity/', // TODO: ganti
+    external: true,
+    Icon: FaInstagram,
+    tilt: -1.5,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/adit-fitra-yoga-50b161369/', // TODO: ganti
+    external: true,
+    Icon: FaLinkedin,
+    tilt: 2,
+  },
+  {
+    label: 'Discord',
+    href: 'https://discord.com/users/1379145663547183216', // TODO: ganti
+    external: true,
+    Icon: FaDiscord,
+    tilt: -2.5,
+  },
+];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('');
-
-  function handleChange(e) {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      setStatus('> Isi dulu semua field.');
-      return;
-    }
-
-    const subject = encodeURIComponent(`Pesan dari portfolio — ${form.name}`);
-    const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    setStatus('> Membuka aplikasi email...');
-  }
-
   return (
     <section id="contact">
       <div className="wrap">
-        <div className="section__eyebrow">FIG. 04 — TRANSMISSION</div>
-        <h2 className="section__title">Hubungi Saya</h2>
+        <MotionDiv
+          initial={{ opacity: 0, x: -60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.4 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+          <div className="section__eyebrow">FIG. 04 — TRANSMISSION</div>
+          <h2 className="section__title">Get In Touch</h2>
+          <p className="contact__intro">
+            Feel free to contact me if you have any questions or just want to say
+            hi.
+          </p>
+          <p className="contact__intro">
+            {EMAIL}
+          </p>
+        </MotionDiv>
 
-        <div className="contact__grid">
-          <div className="brut-box">
-            <span className="brut-box__label">Channels</span>
-            <ul className="contact__list">
-              <li>
-                <a href={`mailto:${EMAIL}`}>
-                  <span className="contact__prompt">&gt;</span> {EMAIL}
-                </a>
-              </li>
-              <li>
-                <a href={`https://wa.me/${PHONE_WA}`} target="_blank" rel="noreferrer">
-                  <span className="contact__prompt">&gt;</span> {PHONE_DISPLAY}
-                </a>
-              </li>
-              <li>
-                <a href="#hero">
-                  <span className="contact__prompt">&gt;</span> Bandung, Indonesia
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="contact-cards">
+          {CHANNELS.map((channel, i) => {
+            const Icon = channel.Icon;
+            const fromLeft = i % 2 === 0;
 
-          <div className="brut-box">
-            <span className="brut-box__label">Send Message</span>
-            <form className="brut-form" onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="name">Nama</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Nama kamu"
-                />
-              </div>
-              <div>
-                <label htmlFor="email">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="email@contoh.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="message">Pesan</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Tulis pesanmu di sini..."
-                />
-              </div>
-              <button type="submit" className="brut-btn brut-btn--primary brut-btn--full">
-                → Kirim Pesan
-              </button>
-              <div className="brut-form__status">{status}</div>
-            </form>
-          </div>
+            return (
+              <MotionDiv
+                key={channel.label}
+                initial={{ opacity: 0, x: fromLeft ? -80 : 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false, amount: 0.4 }}
+                transition={{ duration: 0.45, ease: 'easeOut', delay: i * 0.08 }}
+                whileHover={{ y: -6, rotate: 0 }}
+                style={{ rotate: channel.tilt }}
+                className="contact-card"
+              >
+                <a
+                  href={channel.href}
+                  target={channel.external ? '_blank' : undefined}
+                  rel={channel.external ? 'noreferrer' : undefined}
+                  className="contact-card__link"
+                  aria-label={channel.label}
+                >
+                  <span className="contact-card__icon">
+                    <Icon size={26} />
+                  </span>
+                  <span className="contact-card__label">{channel.label}</span>
+                </a>
+              </MotionDiv>
+            );
+          })}
         </div>
+
+        <MotionDiv
+          initial={{ opacity: 0, x: 60 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.6 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+          <p className="contact__joke">
+            To keep our connection alive, mind lending me a hundred?
+          </p>
+        </MotionDiv>
       </div>
     </section>
   );

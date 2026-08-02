@@ -956,7 +956,7 @@ html.home-snap {
 .contact__list a {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
@@ -975,6 +975,9 @@ html.home-snap {
   font-family: var(--font-mono);
   font-weight: 700;
   color: var(--alert);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact__list a:hover .contact__prompt {
@@ -1357,14 +1360,14 @@ textarea:focus-visible {
 }
 
 .proj-filter--active {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--hazard);
+  color: #000000;
   opacity: 1;
 }
 
 .proj-filter--active:hover {
-  background: var(--ink);
-  color: var(--paper);
+  background: #d3b000;
+  color: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
@@ -1392,7 +1395,7 @@ textarea:focus-visible {
   aspect-ratio: 4 / 3.4;
   overflow: hidden;
   cursor: pointer;
-  background: #14161a;
+  background: var(--paper); /* dulu: #000000ca — sekarang ikut tema */
   outline: none;
 }
 
@@ -1456,39 +1459,58 @@ textarea:focus-visible {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 44px 16px 16px;
+  justify-content: center;   /* satu blok, di tengah card */
+  align-items: center;       /* biar title & desc center kayak contoh */
+  gap: 5px;                 /* jarak antar title/desc/tags, ganti margin manual */
+  padding: 16px 16px;
+  text-align: center;
 }
 
 .proj-card__title {
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: 8px;
-  line-height: 1.2;
+  text-transform: none;      /* di contoh judulnya "Quanta", bukan huruf besar semua */
+  color: var(--ink);
+  margin: 0;                 /* gap yang ngatur jarak, bukan margin */
+  line-height: 1.1;
+}
+
+.proj-card__title--bold {
+  font-weight: 800;
 }
 
 .proj-card__desc {
-  font-size: 12.5px;
-  color: #dcdcdc;
-  margin-bottom: 10px;
-  max-width: 48ch;
+  font-size: 13px;
+  color: var(--wire);
+  margin: 0;
+  max-width: 46ch;
+  text-align: center;        /* bukan justify, biar rapi kayak contoh */
+}
+
+/* kontras desc disesuaikan per tema — --wire nilainya sama di dark & light,
+   jadi kita override manual biar tetap kebaca enak di kedua mode */
+html.dark .proj-card__desc {
+  color: #ffffff;
+}
+
+html:not(.dark) .proj-card__desc {
+  color: #000000;
 }
 
 .proj-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  justify-content: center;   /* tags juga center */
+  gap: 4px;
 }
 
 .proj-card__tag {
   font-size: 11px;
   padding: 3px 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.45);
-  color: #ffffff;
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--ink);  /* pakai default .brut-tag, gak perlu override putih lagi */
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1536,4 +1558,89 @@ textarea:focus-visible {
 /* legend/tooltip dari library ikut tema */
 .calendar-scroll .react-activity-calendar__legend-colors {
   color: var(--wire);
+}
+
+
+/* --------------------------------------------------------------------------
+   CONTACT — intro / joke text
+   -------------------------------------------------------------------------- */
+
+.contact__intro {
+  font-size: 16px;
+  color: var(--wire);
+  max-width: 56ch;
+  margin: 12px 0 40px;
+}
+
+.contact__joke {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wire);
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.75;
+}
+
+/* --------------------------------------------------------------------------
+   CONTACT CARDS — brutalist channel grid
+   -------------------------------------------------------------------------- */
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 22px;
+}
+
+.contact-card {
+  background: var(--paper);
+  border: var(--line) solid var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.contact-card:hover {
+  box-shadow: 10px 10px 0 var(--ink);
+}
+
+.contact-card:active {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.contact-card__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.contact-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--hazard);
+  color: var(--hazard-ink);
+  border: 2px solid var(--ink);
+}
+
+.contact-card__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--wire);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card {
+    transition: none;
+  }
 }
