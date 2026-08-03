@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FileText, Mail } from "lucide-react";
 import SectionReveal from '@/components/SectionReveal';
+import PoopingChicken from '@/components/PoopingChicken';
 
 export default function Hero() {
   return (
@@ -8,13 +9,7 @@ export default function Hero() {
       <div className="wrap">
         <div className="hero__grid">
           <SectionReveal from="right" className="hero__photo-col">
-            <div className="hero__photo-frame">
-              <img
-                src="/images/pak1.jpg"
-                alt="Foto Adit Fitra Yoga"
-                className="hero__photo"
-              />
-            </div>
+            <PoopingChicken className="hero__photo-chicken" />
           </SectionReveal>
 
           <SectionReveal from="left" className="hero__text-col">
