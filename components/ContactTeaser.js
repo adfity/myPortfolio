@@ -60,13 +60,17 @@ export default function ContactTeaser() {
           <SectionReveal from="right" className="split__text">
             <div className="right-teaser__head">
               <div className="section__eyebrow">FIG. 04 — TRANSMISSION</div>
-              <h2 className="section__title">Contact Me</h2>
+              <h2 className="section__title">Get In Touch</h2>
             </div>
 
             <div className="brut-box teaser__box teaser__box--wide">
               <span className="brut-box__label">Channel</span>
+
               <p className="teaser__text">
-                To keep our connection alive, mind lending me a hundred?
+                Feel free to contact me if you have any questions or just want to say hi.
+              </p>
+              <p className="teaser__text">
+                aditfy06@gmail.com
               </p>
 
               <div className="contact-icons">
@@ -80,11 +84,15 @@ export default function ContactTeaser() {
                     target={external ? '_blank' : undefined}
                     rel={external ? 'noopener noreferrer' : undefined}
                   >
-                    <Icon size={50} />
+                    <Icon size={38} />
+                    <span className="contact-icons__label">{label}</span>
                   </a>
                 ))}
               </div>
             </div>
+            <span className="hero__role" style={{ fontSize: '16px' }}>
+              To keep our connection alive, mind lending me a hundred?
+            </span>
           </SectionReveal>
         </div>
       </div>

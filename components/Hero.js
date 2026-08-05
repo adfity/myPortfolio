@@ -1,7 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 import { FileText, Mail } from "lucide-react";
 import SectionReveal from '@/components/SectionReveal';
 import PoopingChicken from '@/components/PoopingChicken';
+
+function scrollToContact(e) {
+  const target = document.getElementById('contact');
+  if (target) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    window.history.pushState(null, '', '/#contact');
+  }
+}
 
 export default function Hero() {
   return (
@@ -26,7 +37,7 @@ export default function Hero() {
                 <FileText size={21} strokeWidth={2.7} />
                 <span>My CV</span>
               </Link>
-              <Link href="/contact" className="brut-btn">
+              <Link href="/#contact" className="brut-btn" onClick={scrollToContact}>
                 <Mail size={21} strokeWidth={2.7} />
                 <span>Contact Me</span>
               </Link>

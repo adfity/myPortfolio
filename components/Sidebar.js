@@ -11,6 +11,17 @@ const ITEMS = [
   { id: 'contact', label: 'Contact', Icon: Mail },
 ];
 
+
+function scrollToContact(e) {
+  const target = document.getElementById('contact');
+  if (target) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    window.history.pushState(null, '', '/#contact');
+  }
+}
+
+
 export default function Sidebar() {
   const [active, setActive] = useState('hero');
 
