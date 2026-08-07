@@ -25,12 +25,12 @@ export default function Hero() {
 
           <SectionReveal from="left" className="hero__text-col">
             <div className="hero__index">FIG. 01 — PROFILE</div>
-            <h1 className="hero__name">jack d. oslo</h1>
-            <span className="hero__role">Web Developer / Data Analyst</span>
+            <h1 className="hero__name">ADIT FITRA YOGA</h1>
+            <span className="hero__role">Full Stack Software Engineer</span>
             <p className="hero__desc">
-              Hi! I'm Adit, a web developer and data analyst. I specialize in 
-              bridging software engineering with modern data analytics to build 
-              fast, scalable web applications powered by intelligent data processing systems.
+              Hi! I'm Adit, a Full Stack Software Engineer focused on building fast, scalable, and 
+              maintainable web applications. I work across both frontend and backend to deliver efficient 
+              and user-friendly solutions.
             </p>
             <div className="hero__cta">
               <Link href="/projects" className="brut-btn brut-btn--primary">

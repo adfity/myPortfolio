@@ -15,7 +15,7 @@ export default function ProjectsTeaser() {
         <div className="split split--photo-right">
           <SectionReveal from="right" className="split__photo">
             <div className="split__photo-frame">
-              <img src="/images/pak1.jpg" alt="Cuplikan proyek Adit Fitra Yoga" />
+              <img src="/images/profile/proje.png" alt="Projects Showcase" />
             </div>
           </SectionReveal>
 

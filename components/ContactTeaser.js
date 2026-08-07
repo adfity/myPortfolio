@@ -7,7 +7,7 @@ import {
   FaDiscord,
 } from 'react-icons/fa';
 
-const EMAIL = 'youremail@example.com'; // TODO: ganti dengan email kamu
+const EMAIL = 'aditfy06@gmail.com';
 
 const CONTACTS = [
   {
@@ -49,51 +49,56 @@ export default function ContactTeaser() {
         <div className="split split--photo-left">
           <SectionReveal from="left" className="split__photo">
             <div className="split__photo-frame">
-              <img 
-                src="/images/pak1.jpg" 
-                alt="Foto kontak Adit Fitra Yoga" 
-                loading="lazy" 
+              <img
+                src="/images/profile/abu4.jpg"
+                alt="Foto kontak Adit Fitra Yoga"
+                loading="lazy"
               />
             </div>
           </SectionReveal>
 
-          <SectionReveal from="right" className="split__text">
-            <div className="right-teaser__head">
+          <div className="split__text">
+            <SectionReveal from="right" className="right-teaser__head">
               <div className="section__eyebrow">FIG. 04 — TRANSMISSION</div>
               <h2 className="section__title">Get In Touch</h2>
-            </div>
+            </SectionReveal>
 
-            <div className="brut-box teaser__box teaser__box--wide">
-              <span className="brut-box__label">Channel</span>
+            <SectionReveal from="right" className="split__text-box">
+              <div className="brut-box teaser__box teaser__box--wide">
+                <span className="brut-box__label">Channel</span>
 
-              <p className="teaser__text">
-                Feel free to contact me if you have any questions or just want to say hi.
-              </p>
-              <p className="teaser__text">
-                aditfy06@gmail.com
-              </p>
+                <p className="teaser__text">
+                  Feel free to contact me if you have any questions or just want to say hi.
+                </p>
+                <p className="teaser__text">
+                  {EMAIL}
+                </p>
 
-              <div className="contact-icons">
-                {CONTACTS.map(({ label, href, external, Icon }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    className="contact-icons__link"
-                    aria-label={label}
-                    title={label}
-                    target={external ? '_blank' : undefined}
-                    rel={external ? 'noopener noreferrer' : undefined}
-                  >
-                    <Icon size={38} />
-                    <span className="contact-icons__label">{label}</span>
-                  </a>
-                ))}
+                <div className="contact-icons">
+                  {CONTACTS.map(({ label, href, external, Icon }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      className="contact-icons__link"
+                      aria-label={label}
+                      title={label}
+                      target={external ? '_blank' : undefined}
+                      rel={external ? 'noopener noreferrer' : undefined}
+                    >
+                      <Icon size={38} />
+                      <span className="contact-icons__label">{label}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-            <span className="hero__role" style={{ fontSize: '16px' }}>
-              To keep our connection alive, mind lending me a hundred?
-            </span>
-          </SectionReveal>
+            </SectionReveal>
+
+            <SectionReveal from="right" className="split__text-role">
+              <span className="hero__role" style={{ fontSize: '16px' }}>
+                To keep our connection alive, mind lending me a hundred?
+              </span>
+            </SectionReveal>
+          </div>
         </div>
       </div>
     </section>

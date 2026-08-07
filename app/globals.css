@@ -400,7 +400,7 @@ html.dark {
   .split__photo-frame,
   .hero__photo-frame {
     @apply w-full max-w-[320px] overflow-hidden;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 5 / 6;
     border: var(--line) solid var(--ink);
     box-shadow: var(--shadow);
     background: var(--paper-dim);
@@ -408,12 +408,12 @@ html.dark {
 
   .split__photo-frame img,
   .hero__photo {
-    @apply w-full h-full object-cover block grayscale contrast-[1.05] transition-[filter] duration-300;
+    @apply w-full h-full object-cover block transition-transform duration-300;
   }
 
   .split__photo-frame:hover img,
   .hero__photo-frame:hover .hero__photo {
-    @apply grayscale-0 contrast-100;
+    @apply scale-110;
   }
 
   .split__text {
@@ -598,6 +598,18 @@ html.dark {
   .tech-card__label { @apply font-mono text-[13px] font-bold uppercase tracking-[0.03em] text-center; }
   @media (prefers-reduced-motion: reduce) { .tech-card { transition: none; } }
 
+.exp__cert-link {
+  @apply inline-flex items-center gap-1.5 mt-3.5 font-mono text-[13px] font-bold
+        uppercase tracking-[0.03em] no-underline px-2.5 py-1.5;
+  color: var(--ink);
+  background: var(--paper);
+  border: 2px solid var(--ink);
+}
+.exp__cert-link:hover {
+  background: var(--hazard);
+  color: var(--hazard-ink);
+}
+
   /* ------------------------------------------------------------------ */
   /* PROJECTS PAGE                                                      */
   /* ------------------------------------------------------------------ */
@@ -654,12 +666,22 @@ html.dark {
   }
   .proj-card__title { @apply font-mono text-[22px] font-bold normal-case m-0 leading-[1.1]; color: var(--ink); }
   .proj-card__title--bold { @apply font-extrabold; }
-  .proj-card__desc { @apply text-[13px] m-0 max-w-[46ch] text-center; color: var(--wire); }
+  .proj-card__desc {
+    @apply text-[12px] m-0 max-w-[46ch] text-justify;
+    color: var(--wire);
+  }
   html.dark .proj-card__desc { color: #ffffff; }
   html:not(.dark) .proj-card__desc { color: #000000; }
-  .proj-card__tags { @apply flex flex-wrap justify-center gap-1; }
-  .proj-card__tag { @apply text-[11px] px-2 py-[3px]; background: var(--paper); color: var(--ink); border-color: var(--ink); }
+    .proj-card__tags {
+      @apply flex flex-wrap justify-center gap-1;
+    }
 
+    .proj-card__tag {
+      @apply text-[11px] px-2 py-[3px] normal-case;
+      background: var(--paper);
+      color: var(--ink);
+      border-color: var(--ink);
+    }
   @media (prefers-reduced-motion: reduce) {
     .proj-card__image, .proj-card__image-overlay { transition: none; }
   }
@@ -826,4 +848,489 @@ html.dark {
 
 .menu-overlay-content nav {
   pointer-events: auto;
+}
+
+/* ==========================================================================
+   MOBILE HERO — biar muat 1 layar tanpa discroll
+   ========================================================================== */
+@media (max-width: 860px) {
+  .hero {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .site-header__logo {
+    font-size: 10px;
+    padding: 6px 7px;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .hero__grid {
+    gap: 12px;
+    text-align: center;
+  }
+
+  .hero__photo-col {
+    justify-content: center;
+  }
+
+  /* ayamnya dibesarin */
+  .hero__photo-chicken.poop-chicken {
+    max-width: 230px;
+    margin: 0 auto;
+  }
+
+  .hero__index {
+    font-size: 11px;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  .hero__name {
+    font-size: clamp(22px, 7vw, 30px);
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero__role {
+    font-size: 13.5px;
+    margin: 8px auto;
+    padding: 5px 10px;
+  }
+
+  .hero__desc {
+    font-size: 16px !important;
+    max-width: 40ch;
+    margin: 0 auto 14px;
+    text-align: justify;
+    text-align-last: center;
+  }
+
+  .hero__cta {
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .hero__cta .brut-btn {
+    padding: 9px 14px;
+    font-size: 12.5px;
+  }
+
+  .hero__meta {
+    font-size: 11px;
+    text-align: center;
+  }
+
+  /* ==========================================================================
+     MOBILE TEASER SECTIONS — About / Projects / Contact
+     ========================================================================== */
+  .teaser {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .split {
+    gap: 22px;
+  }
+
+  /* --- reorder: judul naik ke atas foto (khusus About & Contact,       */
+  /*     karena judulnya nempel di dalam .split__text bareng box)        */
+  #about .split__text,
+  #contact .split__text {
+    display: contents;
+  }
+  #about .right-teaser__head,
+  #contact .right-teaser__head {
+    order: -1;
+  }
+  #about .split__photo,
+  #contact .split__photo {
+    order: 0;
+  }
+  #about .teaser__box,
+  #contact .teaser__box {
+    order: 1;
+  }
+  #contact .hero__role {
+    order: 2;
+  }
+
+  /* --- foto dibesarin --- */
+  .split__photo-frame {
+    max-width: 200px !important;
+  }
+
+  /* --- judul & eyebrow --- */
+  .right-teaser__head,
+  .teaser__head--tight {
+    margin-bottom: 12px !important;
+  }
+
+  .section__eyebrow {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .section__title {
+    font-size: clamp(27px, 11vw, 33px);
+    margin-bottom: 0;
+  }
+
+  /* --- hilangin frame/box, sisain teks doang (kayak Hero) --- */
+  .teaser__box {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  .brut-box__label {
+    display: none !important;
+  }
+
+  /* --- teks paragraf rata kiri-kanan, bukan tengah --- */
+  .teaser__text {
+    font-size: 16px !important;
+    margin: 0 auto 12px;
+    text-align: justify;
+    text-align-last: center;
+  }
+
+  .teaser__box .brut-btn {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* khusus Contact: ikon kontak dikecilin biar muat */
+  .contact-icons {
+    gap: 12px;
+  }
+
+  .contact-icons__link {
+    width: 56px;
+    height: 56px;
+  }
+
+  .contact-icons__link svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .contact-icons__label {
+    font-size: 8.5px;
+  }
+
+  #contact .hero__role {
+    font-size: 14px !important;
+    padding: 6px 10px;
+    margin: 10px auto 0;
+    display: inline-block;
+    text-align: center;
+  }
+
+  /* sembunyikan widget yang ganggu pas mobile */
+  .settings-fab,
+  .web-pet {
+    display: none !important;
+  }
+
+  /* Page laen */
+  /* ---------- About ---------- */
+  .about__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .about__intro .split__photo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .about__intro .split__photo-frame {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .about__bio {
+    width: 100%;
+  }
+
+  .about__bio p {
+    font-size: 16px !important;
+    margin-bottom: 12px;
+    text-align: justify;
+  }
+
+  .about__timeline-item {
+    grid-template-columns: 76px 1fr;
+    gap: 10px;
+    padding: 12px 0;
+  }
+
+  .about__timeline-item h4 {
+    font-size: 15px;
+  }
+
+  .about__timeline-item p {
+    font-size: 13px;
+  }
+
+  .skills__group h4 {
+    font-size: 12px;
+  }
+
+  .exp {
+    margin-top: 48px;
+  }
+
+  .exp__title {
+    margin-bottom: 24px;
+  }
+
+  .exp__card {
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .exp__card-top h4 {
+    font-size: 16px;
+  }
+
+  .exp__card-top time {
+    font-size: 11px;
+  }
+
+  .exp__loc {
+    margin-bottom: 10px;
+  }
+
+  .exp__points li {
+    font-size: 13.5px;
+  }
+
+  .stack {
+    margin-top: 48px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(94px, 94px));
+    gap: 10px;
+  }
+
+  .tech-card {
+    padding: 14px 8px;
+    gap: 8px;
+  }
+
+  .tech-card__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tech-card__label {
+    font-size: 11px;
+  }
+
+  /* ---------- Projects ---------- */
+  .section--projects .section__title {
+    margin-bottom: 20px;
+  }
+
+  .calendar-box {
+    padding: 16px 12px;
+    margin-top: 30px;
+    margin-bottom: 24px;
+  }
+
+  .calendar-scroll {
+    justify-content: flex-start;
+  }
+
+  .proj-filters {
+    justify-content: center !important;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .proj-filters .brut-btn {
+    padding: 8px 12px;
+    font-size: 12.5px;
+  }
+
+  .proj-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .proj-card {
+    aspect-ratio: 4 / 3;
+  }
+
+  .proj-card__title {
+    font-size: 19px;
+  }
+
+  .proj-card__desc {
+    font-size: 12.5px;
+  }
+
+  .log-note {
+    font-size: 13px;
+  }
+
+  #about .section__title {
+    font-size: clamp(20px, 8vw, 28px);
+  }
+
+  #about .about__intro .split__photo {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  #projects .section__title {
+    margin-bottom: 30px;
+  }
+}
+
+/* buat layar kecil banget (iPhone SE dkk) */
+@media (max-width: 400px) {
+  .hero__photo-chicken.poop-chicken {
+    max-width: 200px;
+  }
+
+  .hero__desc {
+    font-size: 12.5px;
+  }
+
+  .split__photo-frame {
+    max-width: 150px;
+  }
+
+  .teaser__text {
+    font-size: 12.5px;
+  }
+
+  /* versi page */
+  .about__intro .split__photo-frame {
+    max-width: 160px;
+  }
+
+  .about__bio p {
+    font-size: 13px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 80px));
+  }
+}
+
+/* load screan */
+.page-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--paper);
+}
+
+.page-loading__box {
+  display: flex;
+  gap: 10px;
+}
+
+.page-loading__dot {
+  width: 14px;
+  height: 14px;
+  background: var(--hazard);
+  border: 2px solid var(--ink);
+  animation: page-loading-bounce 0.9s ease-in-out infinite;
+}
+
+.page-loading__dot:nth-child(2) { animation-delay: 0.15s; }
+.page-loading__dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes page-loading-bounce {
+  0%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-14px); }
+}
+
+.page-loading__text {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   STATUS PAGES — 404 / Error
+   ========================================================================== */
+.status-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.status-page-body {
+  margin: 0;
+}
+
+.status-page__box {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.status-page__code {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 14vw, 96px);
+  line-height: 0.9;
+  margin: 4px 0 6px;
+  color: var(--hazard-ink);
+  -webkit-text-stroke: 2px var(--ink);
+}
+
+.status-page__code--alert {
+  color: var(--alert);
+  -webkit-text-stroke: 2px var(--ink);
+}
+
+.status-page__title {
+  font-size: clamp(20px, 5vw, 28px);
+  margin-bottom: 12px;
+}
+
+.status-page__desc {
+  font-size: 15px;
+  color: var(--wire);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .status-page {
+    padding: 24px 0;
+  }
+
+  .status-page__box {
+    padding: 20px;
+  }
+
+  .status-page__desc {
+    font-size: 13.5px;
+  }
 }

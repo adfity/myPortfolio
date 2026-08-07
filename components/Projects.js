@@ -21,14 +21,14 @@ const CATEGORIES = [
 
 const PROJECTS = [
   {
-    id: 'webgis',
-    year: '2026',
+    id: 'gapps',
+    year: '2025 - 2026',
     category: 'web',
     title: 'GAPPS',
-    meta: 'Internship IT Specialist · Bogor · Nov 2025 – Mei 2026',
-    desc: 'Mengembangkan aplikasi WebGIS untuk mendukung proyek geospasial.',
-    stack: ['Next.js', 'Leaflet', 'Django', 'PostGIS'],
-    image: '/images/cek1.png',
+    meta: 'Internship Project · Geospatial Information Agency (BIG) · Nov 2025 – May 2026',
+    desc: 'A WebGIS and GeoAI platform developed during an internship at BIG, featuring geospatial analysis and YOLOv8-based object detection.',
+    stack: ['Next.js', 'Leaflet', 'Django', 'PostgreSQL', 'Talwind', 'MongoDB'],
+    image: '/images/project/gapss.png',
     link: '/about',
   },
   {
@@ -37,20 +37,53 @@ const PROJECTS = [
     category: 'web',
     title: 'ITSO',
     meta: 'Internship Staff Programmer · Bandung · Apr – Des 2024',
-    desc: 'Mengelola dan memelihara aplikasi web internal kantor.',
-    stack: ['PHP', 'Laravel', 'SQL', 'RESTful API', 'Talwind'],
-    image: '/images/cek1.png',
+    desc: 'Developed features for the internal asset management system, including asset borrowing, editing, cancellation, and user feedback.',
+    stack: ['Laravel', 'MySQL', 'Bootstrap'],
+    image: '/images/project/itso.png',
     link: '/about',
   },
   {
-    id: 'maxy-bootcamp',
+    id: 'landify',
     year: '2024',
     category: 'web',
-    title: 'LANDIFY',
-    meta: 'Maxy Academy (MSIB Batch 7) · Sep – Des 2024 · Nilai 87.61 (A)',
-    desc: 'Membangun layanan backend sebagai bagian dari program bootcamp intensif.',
-    stack: ['PHP', 'SQL', 'RESTful API', 'Talwind', 'mysql'],
-    image: '/images/cek1.png',
+    title: 'Landify',
+    meta: 'Team Project · Maxy Academy Bootcamp · 2024',
+    desc: 'A collaborative website builder for landing pages, blogs, and portfolios. Contributed to backend development using Laravel, Bootstrap, and MySQL.',
+    stack: ['Laravel', 'Bootstrap', 'MySQL', 'GrapesJS'],
+    image: '/images/project/landify.png',
+    link: '/about',
+  },
+  {
+    id: 'laporpak',
+    year: '2024',
+    category: 'web',
+    title: 'LaporPak.com',
+    meta: 'Team Project · Maxy Academy Bootcamp · 2024',
+    desc: 'A collaborative public complaint platform for reporting emergencies such as fires, medical incidents, and theft. Built with Laravel, Tailwind CSS, and MySQL.',
+    stack: ['Laravel', 'Tailwind', 'MySQL'],
+    image: '/images/project/laporpak.png',
+    link: '/about',
+  },
+  {
+    id: 'distroid',
+    year: '2024',
+    category: 'web',
+    title: 'DistroID',
+    meta: 'Personal Project · 2024',
+    desc: 'A Laravel-based e-commerce platform featuring product management, shopping cart, secure checkout, payment integration, and order management.',
+    stack: ['Laravel', 'Tailwind', 'MySQL'],
+    image: '/images/project/distroid.png',
+    link: '/about',
+  },
+  {
+    id: 'huntertikel',
+    year: '2023',
+    category: 'web',
+    title: 'HunterTikel',
+    meta: 'University Course Project · 2024',
+    desc: 'A responsive blogging platform built with PHP, featuring post management, categories, comments, and user authentication.',
+    stack: ['PHP', 'Tailwind', 'MySQL'],
+    image: '/images/project/huntertikel.png',
     link: '/about',
   },
 ];
@@ -93,14 +126,14 @@ function ProjectCard({ project }) {
     >
       <span className="proj-card__year">{project.year}</span>
 
-      <Link
+      {/* <Link
         href={project.link}
         className="proj-card__share"
         aria-label={`Buka ${project.title}`}
         onClick={(e) => e.stopPropagation()}
       >
         <FaExternalLinkAlt size={16} />
-      </Link>
+      </Link> */}
 
       {/* layer screenshot — samar di kondisi diam, full pas hover */}
       <motion.div
