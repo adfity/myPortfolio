@@ -100,7 +100,7 @@ export default function About() {
         >
           <div className="split__photo">
             <div className="split__photo-frame">
-              <img src="/images/profile/abu3.jpg" alt="Adit Fitra Yoga" />
+              <img src="/images/profile/abue.jpg" alt="Adit Fitra Yoga" />
             </div>
           </div>
 
