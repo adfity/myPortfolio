@@ -166,19 +166,19 @@ html.dark {
          mengecil (0.15–0.6s) — tidak ada lagi "lingkaran gelap kosong"
          yang menggantung tanpa isi. */
 .menu-circle {
-    @apply absolute z-1 top-1/2 left-1/2 rounded-full;
-    width: 4000px;
-    height: 4000px;
-    margin-left: -2000px;
-    margin-top: -2000px;
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
+  @apply absolute z-1 top-1/2 left-1/2 rounded-full;
+  width: 300vmax;
+  height: 300vmax;
+  margin-left: -150vmax;
+  margin-top: -150vmax;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
 
   .menu-overlay-content {
     @apply fixed inset-0 z-[100] flex items-center justify-center pointer-events-none
-           bg-transparent! backdrop-blur-none!;
+    bg-transparent! backdrop-blur-none!;
   }
 
   .menu-overlay-content nav {
