@@ -15,7 +15,6 @@ const LINKS = [
 const linksVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.06, delayChildren: 0.35 } },
-  // saat tutup: link runtuh satu-satu, urutan dibalik
   exit: {
     transition: { staggerChildren: 0.06, staggerDirection: -1 },
   },
@@ -31,8 +30,9 @@ const topLine = { closed: { rotate: 0, y: 0 }, open: { rotate: 45, y: 12 } };
 const midLine = { closed: { opacity: 1 }, open: { opacity: 0 } };
 const botLine = { closed: { rotate: 0, y: 0 }, open: { rotate: -45, y: -12 } };
 
-// Lingkaran iris — durasi buka vs tutup dibuat sedikit beda biar
-// tutupnya kerasa "snappy", tapi easing-nya sama persis (mirror).
+// Titik jangkar lingkaran (posisi kira-kira tombol hamburger).
+const CIRCLE_ORIGIN = 'calc(100% - 34px) 28px';
+
 const circleTransition = (isOpen) => ({
   duration: isOpen ? 0.6 : 0.45,
   ease: [0.65, 0, 0.35, 1],
@@ -58,6 +58,18 @@ export default function Header() {
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
+
+  // Kunci scroll body selama menu terbuka — mencegah viewport
+  // "melompat"/melebar akibat address bar mobile show/hide atau
+  // rubber-band scroll saat overlay fullscreen aktif.
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add('menu-lock');
+    } else {
+      document.body.classList.remove('menu-lock');
+    }
+    return () => document.body.classList.remove('menu-lock');
+  }, [open]);
 
   function handleToggle() {
     setOpen((v) => !v);
@@ -99,32 +111,33 @@ export default function Header() {
                 transition={{ duration: 0.25, ease: 'easeInOut' }}
               />
             </span>
-
-            {/* Lingkaran iris — sekarang 100% dikontrol motion (bukan
-                CSS transition), jadi buka & tutup benar-benar mirror
-                dan konsisten. Jangan tambahkan transform/transition
-                untuk .menu-circle lagi di CSS. */}
-            <motion.span
-              className="menu-circle"
-              aria-hidden="true"
-              initial={false}
-              animate={{ scale: open ? 1 : 0 }}
-              transition={circleTransition(open)}
-              style={{ pointerEvents: open ? 'auto' : 'none' }}
-            />
           </button>
         </div>
       </header>
+
+      {/* Lingkaran iris dipindah keluar dari tombol, jadi layer fixed
+          tersendiri seukuran viewport (lihat CSS .menu-circle).
+          Yang dianimasikan cuma clip-path-nya, bukan ukuran box-nya,
+          jadi tidak mungkin memicu overflow/"layar melebar". */}
+      <motion.span
+        className="menu-circle"
+        aria-hidden="true"
+        initial={false}
+        animate={{
+          clipPath: open
+            ? `circle(150% at ${CIRCLE_ORIGIN})`
+            : `circle(0% at ${CIRCLE_ORIGIN})`,
+        }}
+        transition={circleTransition(open)}
+        style={{ pointerEvents: open ? 'auto' : 'none' }}
+      />
 
       <AnimatePresence>
         {open && (
           <motion.div
             className="menu-overlay-content menu-overlay"
-            // BUKA: konten muncul setelah lingkaran hampir penuh membesar
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { delay: 0.3, duration: 0.3 } }}
-            // TUTUP: wrapper ditahan sampai stagger-exit link kelar
-            // (~0.06*3 + 0.2 = 0.38s), baru wrapper-nya fade cepat.
             exit={{ opacity: 0, transition: { delay: 0.38, duration: 0.12, ease: 'easeIn' } }}
           >
             <nav aria-label="Menu utama">

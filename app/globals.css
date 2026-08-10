@@ -166,14 +166,19 @@ html.dark {
          mengecil (0.15–0.6s) — tidak ada lagi "lingkaran gelap kosong"
          yang menggantung tanpa isi. */
 .menu-circle {
-  @apply absolute z-1 top-1/2 left-1/2 rounded-full;
-  width: 300vmax;
-  height: 300vmax;
-  margin-left: -150vmax;
-  margin-top: -150vmax;
+  position: fixed;
+  inset: 0;
+  z-index: 50; /* di bawah .site-header (z-60) supaya tombol hamburger/X selalu terlihat */
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  clip-path: circle(0% at calc(100% - 34px) 28px);
+  -webkit-clip-path: circle(0% at calc(100% - 34px) 28px);
+}
+
+body.menu-lock {
+  overflow: hidden;
+  height: 100dvh;
 }
 
   .menu-overlay-content {
