@@ -176,15 +176,12 @@ html.dark {
   -webkit-clip-path: circle(0% at calc(100% - 34px) 28px);
 }
 
-body.menu-lock {
-  overflow: hidden;
-  height: 100dvh;
-}
-
   .menu-overlay-content {
     @apply fixed inset-0 z-[100] flex items-center justify-center pointer-events-none
     bg-transparent! backdrop-blur-none!;
   }
+
+
 
   .menu-overlay-content nav {
     @apply pointer-events-auto;
@@ -856,6 +853,11 @@ body.menu-lock {
 
 .menu-overlay-content nav {
   pointer-events: auto;
+}
+
+.menu-overlay-content,
+.menu-circle {
+  overscroll-behavior: none;
 }
 
 /* ==========================================================================

@@ -59,17 +59,6 @@ export default function Header() {
     return () => window.removeEventListener('keydown', handleKey);
   }, []);
 
-  // Kunci scroll body selama menu terbuka — mencegah viewport
-  // "melompat"/melebar akibat address bar mobile show/hide atau
-  // rubber-band scroll saat overlay fullscreen aktif.
-  useEffect(() => {
-    if (open) {
-      document.body.classList.add('menu-lock');
-    } else {
-      document.body.classList.remove('menu-lock');
-    }
-    return () => document.body.classList.remove('menu-lock');
-  }, [open]);
 
   function handleToggle() {
     setOpen((v) => !v);

@@ -33,7 +33,11 @@ export default function Hero() {
               and user-friendly solutions.
             </p>
             <div className="hero__cta">
-              <Link href="/projects" className="brut-btn brut-btn--primary">
+              <Link
+                href="https://drive.google.com/file/d/1FOlUK9r7bYgotGTIEjpPPoQvo5FZH3dP/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brut-btn brut-btn--primary">
                 <FileText size={21} strokeWidth={2.7} />
                 <span>My CV</span>
               </Link>
