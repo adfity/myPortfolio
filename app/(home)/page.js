@@ -1,9 +1,9 @@
-import Sidebar from '@/components/Sidebar';
+import Sidebar from '@/components/home/Sidebar';
 import Hero from '@/components/Hero';
-import AboutTeaser from '@/components/AboutTeaser';
-import ProjectsTeaser from '@/components/ProjectsTeaser';
-import ContactTeaser from '@/components/ContactTeaser';
-import HomeScrollSnap from '@/components/HomeScrollSnap';
+import AboutTeaser from '@/components/home/AboutTeaser';
+import ProjectsTeaser from '@/components/home/ProjectsTeaser';
+import ContactTeaser from '@/components/home/ContactTeaser';
+import HomeScrollSnap from '@/components/home/HomeScrollSnap';
 
 export default function HomePage() {
   return (

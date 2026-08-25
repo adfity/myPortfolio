@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { FileText, Mail } from "lucide-react";
 import SectionReveal from '@/components/SectionReveal';
-import PoopingChicken from '@/components/PoopingChicken';
+import PoopingChicken from '@/components/home/PoopingChicken';
 
 function scrollToContact(e) {
   const target = document.getElementById('contact');

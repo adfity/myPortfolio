@@ -29,18 +29,18 @@ const PROJECTS = [
     desc: 'A WebGIS and GeoAI platform developed during an internship at BIG, featuring geospatial analysis and YOLOv8-based object detection.',
     stack: ['Next.js', 'Leaflet', 'Django', 'PostgreSQL', 'Talwind', 'MongoDB'],
     image: '/images/project/gapss.png',
-    link: '/about',
+    link: '/projects/gapss',
   },
   {
     id: 'diskominfo',
     year: '2024',
     category: 'web',
-    title: 'ITSO',
+    title: 'Asset-ITSO',
     meta: 'Internship Staff Programmer · Bandung · Apr – Des 2024',
     desc: 'Developed features for the internal asset management system, including asset borrowing, editing, cancellation, and user feedback.',
     stack: ['Laravel', 'MySQL', 'Bootstrap'],
     image: '/images/project/itso.png',
-    link: '/about',
+    link: '/projects/asset-itso',
   },
   {
     id: 'landify',
@@ -51,7 +51,7 @@ const PROJECTS = [
     desc: 'A collaborative website builder for landing pages, blogs, and portfolios. Contributed to backend development using Laravel, Bootstrap, and MySQL.',
     stack: ['Laravel', 'Bootstrap', 'MySQL', 'GrapesJS'],
     image: '/images/project/landify.png',
-    link: '/about',
+    link: '/projects/landify',
   },
   {
     id: 'laporpak',
@@ -59,10 +59,10 @@ const PROJECTS = [
     category: 'web',
     title: 'LaporPak.com',
     meta: 'Team Project · Maxy Academy Bootcamp · 2024',
-    desc: 'A collaborative public complaint platform for reporting emergencies such as fires, medical incidents, and theft. Built with Laravel, Tailwind CSS, and MySQL.',
-    stack: ['Laravel', 'Tailwind', 'MySQL'],
+    desc: 'A collaborative public complaint platform for reporting emergencies such as fires, medical incidents, and theft. Built with Laravel, Bootstrap CSS, and MySQL.',
+    stack: ['Laravel', 'Bootstrap', 'MySQL'],
     image: '/images/project/laporpak.png',
-    link: '/about',
+    link: '/projects/laporpak',
   },
   {
     id: 'distroid',
@@ -71,9 +71,9 @@ const PROJECTS = [
     title: 'DistroID',
     meta: 'Personal Project · 2024',
     desc: 'A Laravel-based e-commerce platform featuring product management, shopping cart, secure checkout, payment integration, and order management.',
-    stack: ['Laravel', 'Tailwind', 'MySQL'],
+    stack: ['Laravel', 'Bootstrap', 'MySQL'],
     image: '/images/project/distroid.png',
-    link: '/about',
+    link: '/projects/distroid',
   },
   {
     id: 'huntertikel',
@@ -82,9 +82,9 @@ const PROJECTS = [
     title: 'HunterTikel',
     meta: 'University Course Project · 2024',
     desc: 'A responsive blogging platform built with PHP, featuring post management, categories, comments, and user authentication.',
-    stack: ['PHP', 'Tailwind', 'MySQL'],
+    stack: ['PHP', 'CSS', 'MySQL'],
     image: '/images/project/huntertikel.png',
-    link: '/about',
+    link: '/projects/huntertikel',
   },
 ];
 
@@ -126,14 +126,14 @@ function ProjectCard({ project }) {
     >
       <span className="proj-card__year">{project.year}</span>
 
-      {/* <Link
+     <Link
         href={project.link}
         className="proj-card__share"
         aria-label={`Buka ${project.title}`}
         onClick={(e) => e.stopPropagation()}
       >
         <FaExternalLinkAlt size={16} />
-      </Link> */}
+      </Link>
 
       {/* layer screenshot — samar di kondisi diam, full pas hover */}
       <motion.div
