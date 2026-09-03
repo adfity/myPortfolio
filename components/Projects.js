@@ -65,6 +65,17 @@ const PROJECTS = [
     link: '/projects/laporpak',
   },
   {
+    id: 'monetkey',
+    year: '2024',
+    category: 'mobile',
+    title: 'MonetKey',
+    meta: 'University Course Project · 2024',
+    desc: 'An offline-first personal expense tracker built with Flutter, featuring Neo Brutalism UI, local Hive storage, visual analytics via FL Chart, biometric security, and PDF/CSV report exports.',
+    stack: ['Flutter', 'Dart', 'Hive', 'Provider', 'FL Chart'],
+    image: '/images/project/monet.png',
+    link: '/projects/monetkey',
+  },
+  {
     id: 'distroid',
     year: '2024',
     category: 'web',
